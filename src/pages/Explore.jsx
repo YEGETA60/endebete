@@ -3,6 +3,8 @@ import { mockListings } from "../data/mockListings";
 import { MapPin, Star, Zap, Droplets, Wifi, Search, Map } from "lucide-react";
 import MapView from "./MapView";
 import Hero from "../components/Hero";
+import Footer from "../components/Footer";
+import { ETHIOPIAN_CITIES } from "../data/ethiopianLocations";
 
 const subCityData = [
   { nameAm: "አዲስ ከተማ", nameEn: "Addis Ketema", count: 14 },
@@ -18,7 +20,7 @@ const subCityData = [
   { nameAm: "የካ", nameEn: "Yeka", count: 15 }
 ];
 
-export default function Explore({ language, currency, currencyRate, onSelectListing, searchParams, setSearchParams, onHostClick }) {
+export default function Explore({ language, currency, currencyRate, onSelectListing, searchParams, setSearchParams, onHostClick, onTabChange }) {
   const [viewMode, setViewMode] = useState("list"); // list | map
 
   const [localArea, setLocalArea] = useState(searchParams.area || "all");
@@ -154,7 +156,14 @@ export default function Explore({ language, currency, currencyRate, onSelectList
               onChange={(e) => setLocalArea(e.target.value)}
               style={{ fontSize: "0.78rem", padding: "8px 10px", borderRadius: "10px" }}
             >
-              <option value="all">{language === "am" ? "ሁሉም አካባቢ / ወረዳ" : "All Areas / Woredas"}</option>
+              <option value="all">{language === "am" ? "ሁሉም አካባቢዎች እና ከተሞች" : "All Cities & Woredas"}</option>
+              <optgroup label={language === "am" ? "የኢትዮጵያ 60+ ዋና ከተሞች" : "60+ Major Ethiopian Cities"}>
+                {ETHIOPIAN_CITIES.map((city) => (
+                  <option key={city} value={city}>
+                    📍 {city}
+                  </option>
+                ))}
+              </optgroup>
               {subCityData.map((sc) => {
                 const woredas = [];
                 for (let w = 1; w <= sc.count; w++) {
@@ -163,7 +172,7 @@ export default function Explore({ language, currency, currencyRate, onSelectList
                 return (
                   <optgroup 
                     key={sc.nameEn} 
-                    label={language === "am" ? `${sc.nameAm} (${sc.nameEn})` : `${sc.nameEn} (${sc.nameAm})`}
+                    label={language === "am" ? `አዲስ አበባ: ${sc.nameAm} (${sc.nameEn})` : `Addis Ababa: ${sc.nameEn} (${sc.nameAm})`}
                   >
                     {woredas.map((w) => {
                       const padded = w < 10 ? `0${w}` : `${w}`;
@@ -618,6 +627,9 @@ export default function Explore({ language, currency, currencyRate, onSelectList
           )}
         </button>
       )}
+
+      {/* Floot Legal Footer */}
+      <Footer language={language} onTabChange={onTabChange} />
 
     </div>
   );

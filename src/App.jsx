@@ -228,6 +228,7 @@ export default function App() {
                 searchParams={searchParams}
                 setSearchParams={setSearchParams}
                 onHostClick={() => setActiveTab("host")}
+                onTabChange={(tab) => setActiveTab(tab)}
               />
             )}
 
