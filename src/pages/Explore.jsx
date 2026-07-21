@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { mockListings } from "../data/mockListings";
 import { MapPin, Star, Zap, Droplets, Wifi, Search, Map } from "lucide-react";
 import MapView from "./MapView";
+import Hero from "../components/Hero";
 
 const subCityData = [
   { nameAm: "አዲስ ከተማ", nameEn: "Addis Ketema", count: 14 },
@@ -17,7 +18,7 @@ const subCityData = [
   { nameAm: "የካ", nameEn: "Yeka", count: 15 }
 ];
 
-export default function Explore({ language, currency, currencyRate, onSelectListing, searchParams, setSearchParams }) {
+export default function Explore({ language, currency, currencyRate, onSelectListing, searchParams, setSearchParams, onHostClick }) {
   const [viewMode, setViewMode] = useState("list"); // list | map
 
   const [localArea, setLocalArea] = useState(searchParams.area || "all");
@@ -111,11 +112,23 @@ export default function Explore({ language, currency, currencyRate, onSelectList
     setHasSearched(true);
   };
 
+  const handleScrollToSearch = () => {
+    document.getElementById("search-planner")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <div style={{ padding: "16px", position: "relative", minHeight: "100%" }}>
+    <div style={{ padding: "0 16px 16px 16px", position: "relative", minHeight: "100%" }}>
       
+      {/* Hero Section from Floot (Addis Ababa Skyline at night with CTA buttons) */}
+      <Hero
+        language={language}
+        onRenterClick={handleScrollToSearch}
+        onHostClick={onHostClick}
+      />
+
       {/* 1. Premium Search Planner Card (Airbnb & Booking.com style) */}
       <div
+        id="search-planner"
         className="card-premium"
         style={{
           backgroundColor: "var(--bg-white)",

@@ -227,6 +227,7 @@ export default function App() {
                 onSelectListing={handleSelectListing}
                 searchParams={searchParams}
                 setSearchParams={setSearchParams}
+                onHostClick={() => setActiveTab("host")}
               />
             )}
 
