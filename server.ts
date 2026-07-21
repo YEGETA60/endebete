@@ -383,6 +383,20 @@ app.post('_api/payments/chapa-initialize', async c => {
     return c.text("Error loading endpoint code " + e.message, 500);
   }
 })
+app.get('_api/payments/chapa-verify', async c => {
+  try {
+    const { handle } = await import("./endpoints/payments/chapa-verify_GET.js");
+    let request = c.req.raw;
+    const response: any = await handle(request);
+    if (!(response instanceof Response) && response.constructor.name !== "Response") {
+      return c.text("Invalid response format. handle should always return a Response object." + response.constructor.name, 500);
+    }
+    return response;
+  } catch (e) {
+    console.error(e);
+    return c.text("Error loading endpoint code " + e.message, 500);
+  }
+})
 app.put('/_api/photos/upload_binary', async c => {
   try {
     const { getServerUserSession } = await import("./helpers/getServerUserSession.js");
