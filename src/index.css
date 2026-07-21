@@ -1,6 +1,6 @@
 /* Global CSS with Warm Ethiopian color theme for Ende Bete (እንደ ቤቴ) */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+Ethiopic:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+Ethiopic:wght@300;400;500;600;700;800&display=swap');
 
 :root {
   /* Colors */
@@ -24,9 +24,8 @@
   --shadow-color: rgba(44, 37, 32, 0.08);
   
   /* Layout constraints */
-  --phone-width: 420px;
   --nav-height: 64px;
-  --header-height: 60px;
+  --header-height: 68px;
 }
 
 * {
@@ -38,74 +37,84 @@
 }
 
 body {
-  background-color: #EFEBE4; /* neutral background behind the phone mockup */
+  background-color: var(--bg-cream);
   color: var(--text-dark);
-  display: flex;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
   overflow-x: hidden;
 }
 
 /* Scrollbar styling */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(126, 114, 103, 0.2);
+  background: rgba(126, 114, 103, 0.25);
   border-radius: 10px;
 }
 
-/* Phone Mockup Frame for Desktop View */
+/* Root Full Web View */
 #root {
   width: 100%;
-  max-width: var(--phone-width);
-  height: 90vh;
-  min-height: 650px;
-  max-height: 850px;
+  min-height: 100vh;
   background-color: var(--bg-cream);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-  border-radius: 36px;
-  border: 10px solid #1F1A16; /* phone bezel */
-  overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
-}
-
-/* Responsive adjustment for actual mobile screens */
-@media (max-width: 480px) {
-  body {
-    background-color: var(--bg-cream);
-  }
-  #root {
-    max-width: 100%;
-    height: 100vh;
-    max-height: 100vh;
-    min-height: 100%;
-    border: none;
-    border-radius: 0;
-  }
 }
 
 /* App container */
 .app-container {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  min-height: 100vh;
   position: relative;
-  overflow: hidden;
 }
 
 /* Scrollable Main Area */
 .main-content {
   flex: 1;
-  overflow-y: auto;
-  padding-bottom: calc(var(--nav-height) + 16px);
+  width: 100%;
   background-color: var(--bg-cream);
+}
+
+/* Desktop vs Mobile Navigation display */
+.desktop-nav {
+  display: flex;
+}
+.mobile-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none !important;
+  }
+  .mobile-nav {
+    display: flex !important;
+  }
+  .main-content {
+    padding-bottom: calc(var(--nav-height) + 16px);
+  }
+}
+
+/* Desktop Grid Adjustments */
+@media (min-width: 1024px) {
+  .explore-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  .search-planner-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .explore-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
 }
 
 /* Headers & Typography */
@@ -290,27 +299,4 @@ h1, h2, h3, h4 {
 .icon-button:active {
   transform: scale(0.9);
   background-color: var(--bg-cream);
-}
-
-/* Animation classes */
-.spin-animation {
-  animation: spin 1.5s linear infinite;
-}
-
-@keyframes spin {
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.ping-animation {
-  animation: ping 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
-  transform-origin: center;
-}
-
-@keyframes ping {
-  75%, 100% {
-    transform: scale(1.4);
-    opacity: 0;
-  }
 }

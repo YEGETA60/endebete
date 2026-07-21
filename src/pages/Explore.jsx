@@ -119,7 +119,7 @@ export default function Explore({ language, currency, currencyRate, onSelectList
   };
 
   return (
-    <div style={{ padding: "0 16px 16px 16px", position: "relative", minHeight: "100%" }}>
+    <div style={{ padding: "0 16px 16px 16px", position: "relative", minHeight: "100%", maxWidth: "1300px", margin: "0 auto" }}>
       
       {/* Hero Section from Floot (Addis Ababa Skyline at night with CTA buttons) */}
       <Hero
@@ -142,7 +142,7 @@ export default function Explore({ language, currency, currencyRate, onSelectList
           fontFamily: "Outfit, sans-serif"
         }}
       >
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
+        <div className="search-planner-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "14px" }}>
           
           {/* Where to - Area Select */}
           <div className="form-group" style={{ margin: 0 }}>
@@ -405,8 +405,8 @@ export default function Explore({ language, currency, currencyRate, onSelectList
                 </span>
               </div>
 
-              {/* Listings Grid - Clean borderless Airbnb layout */}
-              <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+              {/* Listings Grid - Responsive multi-column layout for PC & Mobile */}
+              <div className="explore-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "24px" }}>
                 {filteredListings.length === 0 ? (
                   <div
                     style={{

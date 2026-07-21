@@ -39,8 +39,9 @@ export default function BottomNav({ activeTab, setActiveTab, language }) {
 
   return (
     <nav
+      className="mobile-nav"
       style={{
-        position: "absolute",
+        position: "fixed",
         bottom: 0,
         left: 0,
         right: 0,

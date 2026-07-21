@@ -183,6 +183,8 @@ export default function App() {
         setCurrency={setCurrency}
         user={user}
         onLogout={handleLogout}
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
       />
 
       {/* Main Content scroll window */}
