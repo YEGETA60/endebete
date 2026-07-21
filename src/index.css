@@ -1,0 +1,316 @@
+/* Global CSS with Warm Ethiopian color theme for Ende Bete (እንደ ቤቴ) */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+Ethiopic:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Colors */
+  --ethiopian-green: #1E824C;
+  --ethiopian-green-light: #2ECC71;
+  --ethiopian-gold: #F1C40F;
+  --ethiopian-gold-dark: #D4AC0D;
+  --terracotta: #D35400;
+  --terracotta-light: #E67E22;
+  
+  /* Gradients */
+  --warm-gradient: linear-gradient(135deg, var(--terracotta) 0%, #E67E22 100%);
+  --green-gradient: linear-gradient(135deg, var(--ethiopian-green) 0%, #27AE60 100%);
+  
+  /* Neutrals */
+  --bg-cream: #FAF6F0;
+  --bg-white: #FFFFFF;
+  --text-dark: #2C2520;
+  --text-muted: #7E7267;
+  --border-color: #EFE9DF;
+  --shadow-color: rgba(44, 37, 32, 0.08);
+  
+  /* Layout constraints */
+  --phone-width: 420px;
+  --nav-height: 64px;
+  --header-height: 60px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Noto Sans Ethiopic', 'Outfit', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: #EFEBE4; /* neutral background behind the phone mockup */
+  color: var(--text-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(126, 114, 103, 0.2);
+  border-radius: 10px;
+}
+
+/* Phone Mockup Frame for Desktop View */
+#root {
+  width: 100%;
+  max-width: var(--phone-width);
+  height: 90vh;
+  min-height: 650px;
+  max-height: 850px;
+  background-color: var(--bg-cream);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  border-radius: 36px;
+  border: 10px solid #1F1A16; /* phone bezel */
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Responsive adjustment for actual mobile screens */
+@media (max-width: 480px) {
+  body {
+    background-color: var(--bg-cream);
+  }
+  #root {
+    max-width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    min-height: 100%;
+    border: none;
+    border-radius: 0;
+  }
+}
+
+/* App container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Scrollable Main Area */
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: calc(var(--nav-height) + 16px);
+  background-color: var(--bg-cream);
+}
+
+/* Headers & Typography */
+h1, h2, h3, h4 {
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+/* Utility layout classes */
+.flex-row {
+  display: flex;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.badge {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-green {
+  background-color: rgba(30, 130, 76, 0.1);
+  color: var(--ethiopian-green);
+}
+
+.badge-gold {
+  background-color: rgba(241, 196, 15, 0.15);
+  color: var(--ethiopian-gold-dark);
+}
+
+.badge-terracotta {
+  background-color: rgba(211, 84, 0, 0.1);
+  color: var(--terracotta);
+}
+
+/* Premium Buttons */
+.btn-primary {
+  background: var(--warm-gradient);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(211, 84, 0, 0.25);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 5px rgba(211, 84, 0, 0.15);
+}
+
+.btn-secondary {
+  background: var(--bg-white);
+  color: var(--text-dark);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-secondary:active {
+  background-color: #FAF6F0;
+  transform: scale(0.97);
+}
+
+.btn-success {
+  background: var(--green-gradient);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(30, 130, 76, 0.25);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-success:active {
+  transform: scale(0.97);
+}
+
+/* Card glassmorphism or warm shadow style */
+.card-premium {
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  margin-bottom: 16px;
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 6px;
+}
+
+.form-input {
+  width: 100%;
+  background-color: var(--bg-cream);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.form-input:focus {
+  border-color: var(--terracotta);
+  background-color: #fff;
+}
+
+.form-select {
+  width: 100%;
+  background-color: var(--bg-cream);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  outline: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232C2520' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px;
+}
+
+.form-select:focus {
+  border-color: var(--terracotta);
+  background-color: #fff;
+}
+
+.icon-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.icon-button:active {
+  transform: scale(0.9);
+  background-color: var(--bg-cream);
+}
+
+/* Animation classes */
+.spin-animation {
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.ping-animation {
+  animation: ping 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+  transform-origin: center;
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
