@@ -14,8 +14,7 @@ export default function Header({ language, setLanguage, currency, setCurrency, u
     { id: "explore", icon: Search, label: { am: "ተከራይ", en: "Explore Stays" } },
     { id: "bookings", icon: CalendarDays, label: { am: "ትዕዛዞች", en: "Bookings" } },
     { id: "inbox", icon: MessageSquare, label: { am: "መልዕክት", en: "Inbox" } },
-    { id: "host", icon: UserCheck, label: { am: "አስተናጋጅ", en: "Become a Host" } },
-    { id: "fayda", icon: ShieldCheck, label: { am: "ፋይዳ ማረጋገጫ", en: "Fayda Verification" } }
+    { id: "host", icon: UserCheck, label: { am: "አስተናጋጅ", en: "Become a Host" } }
   ];
 
   return (

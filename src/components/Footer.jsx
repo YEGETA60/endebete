@@ -114,7 +114,7 @@ export default function Footer({ language, onTabChange }) {
                 </button>
               </li>
               <li>
-                <button onClick={() => onTabChange("fayda")} style={{ background: "none", border: "none", color: "#BDC3C7", cursor: "pointer", padding: 0, textAlign: "left", fontSize: "inherit" }}>
+                <button onClick={() => onTabChange("host")} style={{ background: "none", border: "none", color: "#BDC3C7", cursor: "pointer", padding: 0, textAlign: "left", fontSize: "inherit" }}>
                   {ft.hostResources}
                 </button>
               </li>
@@ -128,7 +128,7 @@ export default function Footer({ language, onTabChange }) {
             </h3>
             <ul style={{ listStyle: "none", padding: 0, margin: 0, fontSize: "0.78rem", display: "flex", flexDirection: "column", gap: "8px" }}>
               <li>
-                <button onClick={() => onTabChange("fayda")} style={{ background: "none", border: "none", color: "#BDC3C7", cursor: "pointer", padding: 0, textAlign: "left", fontSize: "inherit" }}>
+                <button onClick={() => onTabChange("host")} style={{ background: "none", border: "none", color: "#BDC3C7", cursor: "pointer", padding: 0, textAlign: "left", fontSize: "inherit" }}>
                   {ft.safetyTrust}
                 </button>
               </li>
@@ -147,17 +147,17 @@ export default function Footer({ language, onTabChange }) {
             </h3>
             <ul style={{ listStyle: "none", padding: 0, margin: 0, fontSize: "0.78rem", display: "flex", flexDirection: "column", gap: "8px" }}>
               <li>
-                <button onClick={() => onTabChange("fayda")} style={{ background: "none", border: "none", color: "#BDC3C7", cursor: "pointer", padding: 0, textAlign: "left", fontSize: "inherit" }}>
+                <button onClick={() => onTabChange("explore")} style={{ background: "none", border: "none", color: "#BDC3C7", cursor: "pointer", padding: 0, textAlign: "left", fontSize: "inherit" }}>
                   {ft.privacyPolicy}
                 </button>
               </li>
               <li>
-                <button onClick={() => onTabChange("fayda")} style={{ background: "none", border: "none", color: "#BDC3C7", cursor: "pointer", padding: 0, textAlign: "left", fontSize: "inherit" }}>
+                <button onClick={() => onTabChange("explore")} style={{ background: "none", border: "none", color: "#BDC3C7", cursor: "pointer", padding: 0, textAlign: "left", fontSize: "inherit" }}>
                   {ft.termsConditions}
                 </button>
               </li>
               <li>
-                <button onClick={() => onTabChange("fayda")} style={{ background: "none", border: "none", color: "#BDC3C7", cursor: "pointer", padding: 0, textAlign: "left", fontSize: "inherit" }}>
+                <button onClick={() => onTabChange("explore")} style={{ background: "none", border: "none", color: "#BDC3C7", cursor: "pointer", padding: 0, textAlign: "left", fontSize: "inherit" }}>
                   {ft.rentalGuidelines}
                 </button>
               </li>
