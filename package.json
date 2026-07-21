@@ -35,8 +35,6 @@
     "react": "^19.2.6",
     "react-big-calendar": "^1.19.4",
     "react-dom": "^19.2.6",
-    "react-helmet": "^6.1.0",
-    "react-helmet-async": "2.0.5",
     "react-router-dom": "6.30.3",
     "sonner": "^2.0.1",
     "superjson": "2.2.2",
