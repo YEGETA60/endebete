@@ -214,6 +214,18 @@ export default function FaydaVerification({ language, userFaydaVerified, setUser
             </div>
           </div>
 
+          {/* Ethiopian Data Privacy Proclamation 1321/2024 Consent Checkbox */}
+          <div style={{ marginBottom: "16px", marginTop: "12px" }}>
+            <label style={{ display: "flex", alignItems: "flex-start", gap: "8px", cursor: "pointer", fontSize: "0.72rem", color: "var(--text-muted)", lineHeight: "1.4" }}>
+              <input type="checkbox" required style={{ marginTop: "2px" }} />
+              <span>
+                {language === "am"
+                  ? "በኢትዮጵያ የግል መረጃ ጥበቃ አዋጅ ቁጥር 1321/2016 መሠረት የፋይዳ መለያዬ ለማንነት ማረጋገጫ ብቻ እንዲውል ፈቅጃለሁ።"
+                  : "I consent to processing my Fayda ID for identity verification under Ethiopian Data Protection Proclamation No. 1321/2024."}
+              </span>
+            </label>
+          </div>
+
           <button
             id="btn-fayda-submit"
             type="submit"
