@@ -52,11 +52,27 @@ export default function PaymentSim({ bookingData, language, onPaymentSuccess, on
     processPayment();
   };
 
-  const handleCardSubmit = (e) => {
+  const handleCardSubmit = async (e) => {
     e.preventDefault();
-    if (!cardNumber || !cardExpiry || !cardCvv) {
-      alert(language === "am" ? "እባክዎ የካርድ መረጃዎችን በትክክል ያስገቡ!" : "Please fill all card credentials!");
-      return;
+    setLoading(true);
+    try {
+      const res = await fetch("/_api/payments/chapa-initialize", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          amount: totalAmount,
+          email: bookingData?.guestEmail || "guest@ethiopianstays.com",
+          firstName: "Guest",
+          title: bookingData?.listing?.title?.en || "Accommodation Booking"
+        })
+      });
+      const data = await res.json();
+      if (data && data.checkoutUrl && !data.isSimulated) {
+        window.location.href = data.checkoutUrl;
+        return;
+      }
+    } catch (err) {
+      console.warn("Chapa backend call fallback to simulation:", err);
     }
     processPayment();
   };
