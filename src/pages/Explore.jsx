@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { mockListings } from "../data/mockListings";
-import { MapPin, Star, Zap, Droplets, Wifi, Search, Map } from "lucide-react";
+import { MapPin, Star, Zap, Droplets, Wifi, Search, Map, Heart } from "lucide-react";
 import MapView from "./MapView";
 import Hero from "../components/Hero";
 import Footer from "../components/Footer";
@@ -22,6 +22,7 @@ const subCityData = [
 
 export default function Explore({ language, currency, currencyRate, onSelectListing, searchParams, setSearchParams, onHostClick, onTabChange }) {
   const [viewMode, setViewMode] = useState("list"); // list | map
+  const [favorites, setFavorites] = useState([]);
 
   const [localArea, setLocalArea] = useState(searchParams.area || "all");
   const [localStayType, setLocalStayType] = useState(searchParams.stayType || "nightly");
@@ -463,6 +464,36 @@ export default function Explore({ language, currency, currencyRate, onSelectList
                             <span style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: "rgba(255,255,255,0.4)" }} />
                             <span style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: "rgba(255,255,255,0.4)" }} />
                           </div>
+
+                          {/* Heart Wishlist Overlay */}
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setFavorites(prev => 
+                                prev.includes(listing.id) 
+                                  ? prev.filter(id => id !== listing.id) 
+                                  : [...prev, listing.id]
+                              );
+                            }}
+                            style={{
+                              position: "absolute",
+                              top: "12px",
+                              right: "12px",
+                              background: "rgba(0, 0, 0, 0.3)",
+                              border: "none",
+                              borderRadius: "50%",
+                              width: "32px",
+                              height: "32px",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              cursor: "pointer",
+                              zIndex: 3,
+                              backdropFilter: "blur(2px)"
+                            }}
+                          >
+                            <Heart size={16} fill={favorites.includes(listing.id) ? "#E74C3C" : "transparent"} stroke={favorites.includes(listing.id) ? "#E74C3C" : "#FFF"} />
+                          </button>
 
                           {/* Fayda Badge overlay */}
                           {listing.host.verifiedFayda && (
