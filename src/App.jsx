@@ -3,7 +3,6 @@ import Header from "./components/Header";
 import BottomNav from "./components/BottomNav";
 import Explore from "./pages/Explore";
 import ListingDetail from "./pages/ListingDetail";
-import FaydaVerification from "./pages/FaydaVerification";
 import PaymentSim from "./pages/PaymentSim";
 import HostDashboard from "./pages/HostDashboard";
 import Bookings from "./pages/Bookings";
@@ -161,13 +160,6 @@ export default function App() {
   useEffect(() => {
     setSelectedListingId(null);
     setPaymentBooking(null);
-
-    // Security: when the renter search system is active (explore tab), 
-    // automatically log out the host account to prevent unauthorized access.
-    if (activeTab === "explore" && user?.isHost) {
-      api.auth.logout();
-      setUser(null);
-    }
   }, [activeTab, user]);
 
   // Find listing if detail view is requested

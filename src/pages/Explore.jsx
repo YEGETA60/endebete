@@ -31,7 +31,7 @@ export default function Explore({ language, currency, currencyRate, onSelectList
   const [localGuests, setLocalGuests] = useState(searchParams.guests || 1);
   const [localPropertyType, setLocalPropertyType] = useState(searchParams.propertyType || "all");
 
-  const [hasSearched, setHasSearched] = useState(false);
+  const [hasSearched, setHasSearched] = useState(true);
 
   const { area, stayType, checkInDate, stayLength, guests, propertyType } = searchParams;
 
